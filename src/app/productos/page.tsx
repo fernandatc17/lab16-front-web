@@ -43,7 +43,7 @@ export default function ProductosPage() {
   const fetchProductos = async () => {
     try {
       setLoading(true);
-      const res = await fetch('http://localhost:3000/api/productos');
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/api/productos`);
       const data = await res.json();
       setProductos(data);
     } catch (error) {
@@ -59,7 +59,7 @@ export default function ProductosPage() {
 
     try {
       setDeleting(codProducto);
-      const res = await fetch(`http://localhost:3000/api/productos/${codProducto}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/productos/${codProducto}`, {
         method: 'DELETE',
       });
 
